@@ -27,7 +27,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
-        tag: v4.3.0
+        tag: v4.4.1
   - name: libzen
     buildsystem: simple
     build-commands:
@@ -62,5 +62,5 @@ modules:
         path: org.cubocore.CoreInfo.appdata.xml
       - type: git
         url: https://gitlab.com/cubocore/coreapps/coreinfo.git
-        tag: v4.3.0
+        tag: v4.4.0
 
