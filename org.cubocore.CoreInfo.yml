@@ -1,6 +1,6 @@
 app-id: org.cubocore.CoreInfo
 runtime: org.kde.Platform
-runtime-version: '5.15-23.08'
+runtime-version: '5.15-25.08'
 sdk: org.kde.Sdk
 command: coreinfo
 finish-args:
@@ -22,6 +22,7 @@ cleanup:
 modules:
   - name: libcprime
     buildsystem: cmake-ninja
+    config-opts: ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"]
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
@@ -29,7 +30,7 @@ modules:
   - name: libzen
     buildsystem: simple
     build-commands:
-      - cd Project/CMake && cmake -DCMAKE_INSTALL_PREFIX=/app -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release
+      - cd Project/CMake && cmake -DCMAKE_INSTALL_PREFIX=/app -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - cd Project/CMake && make
       - cd Project/CMake && make install
     sources:
@@ -40,7 +41,7 @@ modules:
     subdir: Project/CMake
     buildsystem: simple
     build-commands:
-      - cmake -DCMAKE_INSTALL_PREFIX=/app -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=On
+      - cmake -DCMAKE_INSTALL_PREFIX=/app -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_SHARED_LIBS=On -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - make
       - make install
     sources:
