@@ -1,0 +1,29 @@
+--- a/cc.cubocore.CoreInfo.desktop
++++ b/cc.cubocore.CoreInfo.desktop
+@@ -5,4 +5,4 @@
+ Exec=coreinfo
+-Icon=cc.cubocore.CoreInfo
++Icon=org.cubocore.CoreInfo
+ Type=Application
+ Categories=Qt;Utility;X-CSuite;
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -31,3 +31,3 @@
+ #include "coreinfo.h"
+ 
+-extern const QString appID = QStringLiteral(APP_ID);
++extern const QString appID = QStringLiteral("org.cubocore.CoreInfo");
+ 
+--- a/cc.cubocore.CoreInfo.metainfo.xml
++++ b/cc.cubocore.CoreInfo.metainfo.xml
+@@ -5,3 +5,3 @@
+ <component type="desktop-application">
+-    <id>cc.cubocore.CoreInfo</id>
++    <id>org.cubocore.CoreInfo</id>
+ 
+@@ -14,3 +14,3 @@
+     <developer_name>CuboCore Group</developer_name>
+ 
+-    <launchable type="desktop-id">cc.cubocore.CoreInfo.desktop</launchable>
++    <launchable type="desktop-id">org.cubocore.CoreInfo.desktop</launchable>
+ 
