@@ -1,8 +1,11 @@
 app-id: org.cubocore.CoreInfo
 runtime: org.kde.Platform
-runtime-version: '5.15-25.08'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: coreinfo
+rename-desktop-file: cc.cubocore.CoreInfo.desktop
+rename-icon: cc.cubocore.CoreInfo
+rename-appdata-file: cc.cubocore.CoreInfo.metainfo.xml
 finish-args:
   - --share=ipc
   - --socket=fallback-x11
@@ -22,11 +25,14 @@ cleanup:
 modules:
   - name: libcprime
     buildsystem: cmake-ninja
-    config-opts: ["-DCMAKE_POLICY_VERSION_MINIMUM=3.5"]
+    config-opts: [
+        "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+    ]
     sources:
       - type: git
         url: https://gitlab.com/cubocore/libcprime.git
-        tag: v4.5.0
+        commit: 17d4c94f3be2c7f67dc757cf852f0144945c2c69
+        tag: v5.0.1
   - name: libzen
     buildsystem: simple
     build-commands:
@@ -49,13 +55,12 @@ modules:
         url: https://github.com/MediaArea/MediaInfoLib.git
         tag: v21.03
   - name: coreinfo
-    post-install:
-      - install -Dp -m 644 org.cubocore.CoreInfo.appdata.xml /app/share/appdata/org.cubocore.CoreInfo.appdata.xml
     buildsystem: cmake-ninja
     sources:
-      - type: file
-        path: org.cubocore.CoreInfo.appdata.xml
       - type: git
         url: https://gitlab.com/cubocore/coreapps/coreinfo.git
-        tag: v4.5.0
+        commit: c6efd27c35137baaa64ed60f72c3fe288494c919
+        tag: v5.0.1
+      - type: patch
+        path: fix-appID-name.patch
 
